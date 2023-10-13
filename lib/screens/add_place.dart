@@ -31,32 +31,34 @@ class _NewPlaceScreenState extends ConsumerState<AddPlaceScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(24),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              TextFormField(
-                controller: titleController,
-                maxLength: 50,
-                style: TextStyle(color: Theme.of(context).primaryColorLight),
-                decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.title),
-                  labelText: 'Title',
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.onSecondary,
-                        width: 5.0),
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                TextFormField(
+                  controller: titleController,
+                  maxLength: 50,
+                  style: TextStyle(color: Theme.of(context).primaryColorLight),
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.title),
+                    labelText: 'Title',
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          color: Theme.of(context).colorScheme.onSecondary,
+                          width: 5.0),
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              ElevatedButton(
-                onPressed: _savePlace,
-                child: const Text('Add Place'),
-              ),
-            ],
+                const SizedBox(
+                  height: 16,
+                ),
+                ElevatedButton(
+                  onPressed: _savePlace,
+                  child: const Text('Add Place'),
+                ),
+              ],
+            ),
           ),
         ),
       ),
