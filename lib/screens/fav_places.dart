@@ -26,7 +26,7 @@ class _FavoritePlacesScreenState extends ConsumerState<FavoritePlacesScreen> {
 
   void openPlaceDetail(Place place) {
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => FavoritePlaceDetail(place: place)));
+        builder: (context) => FavoritePlaceDetailScreen(place: place)));
   }
 
   @override
