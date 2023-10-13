@@ -27,11 +27,19 @@ class _PlacesListState extends ConsumerState<PlacesList> {
   Widget build(BuildContext context) {
     final places = widget.places;
 
-    return ListView.builder(
+    Widget content = ListView.builder(
         itemBuilder: (context, index) => FavoritePlaceItem(
               place: places[index],
               onTap: _selectPlace,
             ),
         itemCount: places.length);
+
+    if (places.isEmpty) {
+      content = const Center(
+        child: Text('No Favorites yet :)'),
+      );
+    }
+
+    return content;
   }
 }
