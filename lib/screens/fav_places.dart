@@ -34,7 +34,9 @@ class _FavoritePlacesScreenState extends ConsumerState<FavoritePlacesScreen> {
         ],
       ),
       body: ListView.builder(
-          itemBuilder: (context, index) => const FavoritePlaceItem(),
+          itemBuilder: (context, index) => FavoritePlaceItem(
+                place: favoritePlaces[index],
+              ),
           itemCount: favoritePlaces.length),
     );
   }
