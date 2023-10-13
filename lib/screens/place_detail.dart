@@ -1,8 +1,8 @@
 import 'package:favorite_places/models/place.dart';
 import 'package:flutter/material.dart';
 
-class FavoritePlaceDetailScreen extends StatelessWidget {
-  const FavoritePlaceDetailScreen({
+class PlaceDetailScreen extends StatelessWidget {
+  const PlaceDetailScreen({
     super.key,
     required this.place,
   });
