@@ -22,12 +22,13 @@ class _NewPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   }
 
   void _savePlace() {
-    ref
-        .read(favoritePlacesProvider.notifier)
-        .addFavoritePlace(Place(title: titleController.text));
+    if (_formKey.currentState!.validate()) {
+      ref
+          .read(favoritePlacesProvider.notifier)
+          .addFavoritePlace(Place(title: titleController.text));
 
-    print('savePlace called');
-    Navigator.pop(context);
+      Navigator.pop(context);
+    }
   }
 
   @override
@@ -55,6 +56,15 @@ class _NewPlaceScreenState extends ConsumerState<AddPlaceScreen> {
                         width: 5.0),
                   ),
                 ),
+                validator: (value) {
+                  if (value == null ||
+                      value.isEmpty ||
+                      value.trim().length <= 1 ||
+                      value.trim().length > 50) {
+                    return 'Must be between 1 and 50 characters';
+                  }
+                  return null;
+                },
               ),
               const SizedBox(
                 height: 16,
