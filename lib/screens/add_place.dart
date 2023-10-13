@@ -3,14 +3,14 @@ import 'package:favorite_places/providers/favorites_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class NewPlaceScreen extends ConsumerStatefulWidget {
-  const NewPlaceScreen({super.key});
+class AddPlaceScreen extends ConsumerStatefulWidget {
+  const AddPlaceScreen({super.key});
 
   @override
-  ConsumerState<NewPlaceScreen> createState() => _NewPlaceScreenState();
+  ConsumerState<AddPlaceScreen> createState() => _NewPlaceScreenState();
 }
 
-class _NewPlaceScreenState extends ConsumerState<NewPlaceScreen> {
+class _NewPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   final _formKey = GlobalKey<FormState>();
   final titleController = TextEditingController();
 
