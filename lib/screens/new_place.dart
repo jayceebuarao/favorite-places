@@ -38,6 +38,7 @@ class _NewPlaceScreenState extends ConsumerState<NewPlaceScreen> {
               TextFormField(
                 controller: titleController,
                 maxLength: 50,
+                style: TextStyle(color: Theme.of(context).primaryColorLight),
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.title),
                   labelText: 'Title',
