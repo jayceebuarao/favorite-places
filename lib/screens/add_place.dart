@@ -14,6 +14,13 @@ class _NewPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   final _formKey = GlobalKey<FormState>();
   final titleController = TextEditingController();
 
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    titleController.dispose();
+  }
+
   void _savePlace() {
     ref
         .read(favoritePlacesProvider.notifier)
