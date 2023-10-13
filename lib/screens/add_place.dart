@@ -1,5 +1,6 @@
 import 'package:favorite_places/models/place.dart';
 import 'package:favorite_places/providers/favorites_provider.dart';
+import 'package:favorite_places/widgets/image_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -66,9 +67,9 @@ class _NewPlaceScreenState extends ConsumerState<AddPlaceScreen> {
                   return null;
                 },
               ),
-              const SizedBox(
-                height: 16,
-              ),
+              const SizedBox(height: 10),
+              ImageInput(),
+              const SizedBox(height: 16),
               ElevatedButton.icon(
                 onPressed: _savePlace,
                 icon: const Icon(Icons.add),
