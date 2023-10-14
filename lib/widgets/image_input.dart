@@ -15,16 +15,22 @@ class _ImageInputState extends State<ImageInput> {
 
   void _takePicture() async {
     final imagePicker = ImagePicker();
+
+    //show camera UI and wait for user input
     final pickedImage =
         await imagePicker.pickImage(source: ImageSource.camera, maxWidth: 600);
 
     if (pickedImage == null) {
       return;
     }
+
+    //set photo path to _selectedImage
+    //(imagePicker return XFile type value and File does not accept that, so must pass path)
     setState(() {
       _selectedImage = File(pickedImage.path);
     });
 
+    //show image to image widget
     widget.onPickImage(_selectedImage!);
   }
 

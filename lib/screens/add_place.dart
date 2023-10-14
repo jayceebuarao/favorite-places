@@ -21,12 +21,12 @@ class _NewPlaceScreenState extends ConsumerState<AddPlaceScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     titleController.dispose();
   }
 
   void _savePlace() {
+    //if form returns no errors, form data is added to list
     if (_formKey.currentState!.validate() || _selectedImage != null) {
       ref.read(favoritePlacesProvider.notifier).addFavoritePlace(
           Place(title: titleController.text, image: _selectedImage!));
