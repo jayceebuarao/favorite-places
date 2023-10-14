@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:favorite_places/models/place.dart';
 import 'package:favorite_places/providers/favorites_provider.dart';
 import 'package:favorite_places/widgets/image_input.dart';
@@ -14,6 +16,7 @@ class AddPlaceScreen extends ConsumerStatefulWidget {
 class _NewPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   final _formKey = GlobalKey<FormState>();
   final titleController = TextEditingController();
+  File? _selectedImage;
 
   @override
   void dispose() {
@@ -23,10 +26,9 @@ class _NewPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   }
 
   void _savePlace() {
-    if (_formKey.currentState!.validate()) {
-      ref
-          .read(favoritePlacesProvider.notifier)
-          .addFavoritePlace(Place(title: titleController.text));
+    if (_formKey.currentState!.validate() || _selectedImage != null) {
+      ref.read(favoritePlacesProvider.notifier).addFavoritePlace(
+          Place(title: titleController.text, image: _selectedImage!));
 
       Navigator.pop(context);
     }
@@ -68,7 +70,11 @@ class _NewPlaceScreenState extends ConsumerState<AddPlaceScreen> {
                 },
               ),
               const SizedBox(height: 10),
-              ImageInput(),
+              ImageInput(
+                onPickImage: (image) {
+                  _selectedImage = image;
+                },
+              ),
               const SizedBox(height: 16),
               ElevatedButton.icon(
                 onPressed: _savePlace,
