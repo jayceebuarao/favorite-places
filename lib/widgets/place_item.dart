@@ -18,6 +18,10 @@ class FavoritePlaceItem extends StatelessWidget {
         onTap(place);
       },
       title: Text(place.title),
+      leading: CircleAvatar(
+        radius: 26,
+        backgroundImage: FileImage(place.image),
+      ),
     );
   }
 }
