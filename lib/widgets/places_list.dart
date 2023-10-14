@@ -27,12 +27,15 @@ class _PlacesListState extends ConsumerState<PlacesList> {
   Widget build(BuildContext context) {
     final places = widget.places;
 
-    Widget content = ListView.builder(
-        itemBuilder: (context, index) => FavoritePlaceItem(
-              place: places[index],
-              onTap: _selectPlace,
-            ),
-        itemCount: places.length);
+    Widget content = Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ListView.builder(
+          itemBuilder: (context, index) => FavoritePlaceItem(
+                place: places[index],
+                onTap: _selectPlace,
+              ),
+          itemCount: places.length),
+    );
 
     if (places.isEmpty) {
       content = const Center(
