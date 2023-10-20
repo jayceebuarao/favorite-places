@@ -17,7 +17,18 @@ class FavoritePlaceItem extends StatelessWidget {
       onTap: () {
         onTap(place);
       },
-      title: Text(place.title),
+      title: Text(
+        place.title,
+        style: Theme.of(context).textTheme.titleMedium!.copyWith(
+              color: Theme.of(context).colorScheme.onBackground,
+            ),
+      ),
+      subtitle: Text(
+        place.location.address,
+        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+              color: Theme.of(context).colorScheme.onBackground,
+            ),
+      ),
       leading: CircleAvatar(
         radius: 26,
         backgroundImage: FileImage(place.image),
