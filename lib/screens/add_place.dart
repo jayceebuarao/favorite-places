@@ -18,6 +18,7 @@ class _NewPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   final _formKey = GlobalKey<FormState>();
   final titleController = TextEditingController();
   File? _selectedImage;
+  PlaceLocation? _selectedlocation;
 
   @override
   void dispose() {
@@ -27,9 +28,13 @@ class _NewPlaceScreenState extends ConsumerState<AddPlaceScreen> {
 
   void _savePlace() {
     //if form returns no errors, form data is added to list
-    if (_formKey.currentState!.validate() || _selectedImage != null) {
-      ref.read(favoritePlacesProvider.notifier).addFavoritePlace(
-          Place(title: titleController.text, image: _selectedImage!));
+    if (_formKey.currentState!.validate() ||
+        _selectedImage != null ||
+        _selectedlocation != null) {
+      ref.read(favoritePlacesProvider.notifier).addFavoritePlace(Place(
+          title: titleController.text,
+          image: _selectedImage!,
+          location: _selectedlocation!));
 
       Navigator.pop(context);
     }
@@ -77,7 +82,11 @@ class _NewPlaceScreenState extends ConsumerState<AddPlaceScreen> {
                 },
               ),
               const SizedBox(height: 10),
-              LocationInput(),
+              LocationInput(
+                onSelectLocation: (location) {
+                  _selectedlocation = location;
+                },
+              ),
               const SizedBox(height: 16),
               ElevatedButton.icon(
                 onPressed: _savePlace,
