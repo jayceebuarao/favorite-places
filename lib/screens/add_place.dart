@@ -27,14 +27,12 @@ class _NewPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   }
 
   void _savePlace() {
-    //if form returns no errors, form data is added to list
+    //if form returns no errors, form data is added to listX
     if (_formKey.currentState!.validate() ||
         _selectedImage != null ||
         _selectedlocation != null) {
-      ref.read(favoritePlacesProvider.notifier).addFavoritePlace(Place(
-          title: titleController.text,
-          image: _selectedImage!,
-          location: _selectedlocation!));
+      ref.read(favoritePlacesProvider.notifier).addFavoritePlace(
+          titleController.text, _selectedImage!, _selectedlocation!);
 
       Navigator.pop(context);
     }
