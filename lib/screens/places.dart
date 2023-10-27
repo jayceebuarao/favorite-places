@@ -12,6 +12,14 @@ class PlacesScreen extends ConsumerStatefulWidget {
 }
 
 class _FavoritePlacesScreenState extends ConsumerState<PlacesScreen> {
+  late Future<void> _placesFuture;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _placesFuture = ref.read(favoritePlacesProvider.notifier).loadPlaces();
+  }
+
   void newPlace() {
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -31,7 +39,14 @@ class _FavoritePlacesScreenState extends ConsumerState<PlacesScreen> {
           IconButton(onPressed: newPlace, icon: const Icon(Icons.add)),
         ],
       ),
-      body: PlacesList(places: favoritePlaces),
+      body: FutureBuilder(
+          future: _placesFuture,
+          builder: (context, snapshot) =>
+              snapshot.connectionState == ConnectionState.waiting
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : PlacesList(places: favoritePlaces)),
     );
   }
 }
