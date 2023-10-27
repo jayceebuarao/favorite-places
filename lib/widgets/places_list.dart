@@ -38,8 +38,13 @@ class _PlacesListState extends ConsumerState<PlacesList> {
     );
 
     if (places.isEmpty) {
-      content = const Center(
-        child: Text('No Favorites yet :)'),
+      content = Center(
+        child: Text(
+          'No Favorites yet :)',
+          style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                color: Theme.of(context).colorScheme.onBackground,
+              ),
+        ),
       );
     }
 
